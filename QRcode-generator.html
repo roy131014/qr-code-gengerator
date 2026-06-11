@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<style>
+#qrcode{
+ box-shadow: 0 0 0 4px lightyellow, 0 0 0 12px #1bd115;
+Margin:20px;
+Width:150px;
+Height:150px;
+margin: 50px;
+transform:translateX(225px);
+}
+body{
+Position:realative;
+Background-color: lightyellow;
+}
+#outer-container{
+ position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+Input{
+transform:translateX(215px);
+width:110px;
+height:32px;
+border-radius:32px;
+display:inline-block;
+}
+</style>
+<head>
+<script>
+
+function generateQRCode() {
+
+    const text = document.getElementById("qr-text").value.trim();
+
+    if (!text) {
+
+        alert("Please enter some text or a URL");
+
+        return;
+
+    }
+
+    document.getElementById("qrcode").innerHTML = "";
+
+    new QRCode(document.getElementById("qrcode"), {
+
+        text: text,
+
+        width: 150,
+
+        height: 150
+
+    });
+
+}
+</script>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QR Code Generator</title>
+
+    <!-- QR code generation library -->
+
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+
+</head>
+
+<body>
+<div id="outer-container">
+
+ <h1 style="transform:translateX(125px);font-size:50px;">온라인 QR 코드 생성</h1>
+
+    <input type="text" id="qr-text" placeholder="URL을 여기에 입력" >
+
+    <button onclick="generateQRCode()" style="transform:translateX(215px);padding:10px;border-radius:32px;">QR 코드 생성</button>
+
+    <!-- QR code will appear here -->
+
+    <div id="qrcode"style="transform:translateX(205px);">QR 코드가 여기에 표시됩니다</div>
+
+<small style="transform:translateX(5em);">https://www.qrcode-tiger.com/how-to-generate-a-qr-code-using-html에 나와있는 QR  코드 생성 코드를 참고했습니다.</small>
+</div>
+
+</body>
+
+</html>
